@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إيزي قافية - شاشة الإدارة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>إيزي قافية - شاشة الإدارة</h1>
+            <div class="admin-info">
+                <span id="admin-name">جارٍ التحميل...</span>
+                <button id="logout-btn">تسجيل خروج</button>
+            </div>
+        </header>
+        
+        <div class="tabs">
+            <div class="tab active" data-tab="orders">الطلبات</div>
+            <div class="tab" data-tab="menu">إدارة القائمة</div>
+        </div>
+        
+        <div class="tab-content active" id="orders">
+            <div class="orders-header">
+                <h2>الطلبات النشطة</h2>
+                <div class="order-filter">
+                    <select id="order-filter">
+                        <option value="new">طلبات جديدة</option>
+                        <option value="preparing">قيد التحضير</option>
+                        <option value="completed">مكتملة</option>
+                        <option value="all">جميع الطلبات</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="orders-list" id="orders-list">
+                <!-- سيتم ملؤها بالجافاسكريبت -->
+            </div>
+        </div>
+        
+        <div class="tab-content" id="menu">
+            <h2>إدارة قائمة المشروبات</h2>
+            
+            <div class="menu-categories">
+                <div class="menu-category">
+                    <h3>المشروبات الساخنة</h3>
+                    <div class="menu-items-list" id="hot-items-list">
+                        <!-- سيتم ملؤها بالجافاسكريبت -->
+                    </div>
+                </div>
+                
+                <div class="menu-category">
+                    <h3>المشروبات الباردة</h3>
+                    <div class="menu-items-list" id="cold-items-list">
+                        <!-- سيتم ملؤها بالجافاسكريبت -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="add-item-form">
+                <h3>إضافة صنف جديد</h3>
+                <div class="form-group">
+                    <label for="item-name">اسم الصنف:</label>
+                    <input type="text" id="item-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="item-price">السعر (ج.م):</label>
+                    <input type="number" id="item-price" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="item-type">النوع:</label>
+                    <select id="item-type">
+                        <option value="hot">مشروب ساخن</option>
+                        <option value="cold">مشروب بارد</option>
+                    </select>
+                </div>
+                <div class="form-group form-checkbox">
+                    <input type="checkbox" id="item-available" checked>
+                    <label for="item-available">متاح للطلب</label>
+                </div>
+                <button class="submit-btn" id="add-item">إضافة الصنف</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>تعديل الصنف</h3>
+            <div class="form-group">
+                <label for="edit-item-name">اسم الصنف:</label>
+                <input type="text" id="edit-item-name" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-item-price">السعر (ج.م):</label>
+                <input type="number" id="edit-item-price" min="1" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-item-type">النوع:</label>
+                <select id="edit-item-type">
+                    <option value="hot">مشروب ساخن</option>
+                    <option value="cold">مشروب بارد</option>
+                </select>
+            </div>
+            <div class="form-group form-checkbox">
+                <input type="checkbox" id="edit-item-available">
+                <label for="edit-item-available">متاح للطلب</label>
+            </div>
+            <button class="submit-btn" id="save-edit">حفظ التعديلات</button>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="../firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
